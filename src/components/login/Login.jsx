@@ -11,11 +11,11 @@ import upload from "../../lib/upload";
 
 const Login = () => {
 
-  const [formValues, setFormValues] = useState({
-    username: "",
-    email: "",
-    password: ""
-  });
+  // const [formValues, setFormValues] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: ""
+  // });
   
   const [avatar, setAvatar] = useState({
     file: null,
@@ -71,15 +71,15 @@ const Login = () => {
       });
 
       toast.success("Account created! You can login now!");
-      setFormValues({
-        username: "",
-        email: "",
-        password: ""
-      });
-      setAvatar({
-        file: null,
-        url: "",
-      })
+      // setFormValues({
+      //   username: "",
+      //   email: "",
+      //   password: ""
+      // });
+      // setAvatar({
+      //   file: null,
+      //   url: "",
+      // })
   
 
     } catch (err) {
@@ -133,22 +133,22 @@ const Login = () => {
             onChange={handleAvatar}
           />
           <input type="text" placeholder="Username" name="username" 
-          value={formValues.username}
-          onChange={(e) =>
-            setFormValues({ ...formValues, username: e.target.value })
-          }
+          // value={formValues.username}
+          // onChange={(e) =>
+          //   setFormValues({ ...formValues, username: e.target.value })
+          // }
           />
           <input type="text" placeholder="Email" name="email"
-          value={formValues.email}
-          onChange={(e) =>
-            setFormValues({ ...formValues, email: e.target.value })
-          }
+          // value={formValues.email}
+          // onChange={(e) =>
+          //   setFormValues({ ...formValues, email: e.target.value })
+          // }
           />
           <input type="password" placeholder="Password" name="password"
-          value={formValues.password}
-          onChange={(e) =>
-            setFormValues({ ...formValues, password: e.target.value })
-          }
+          // value={formValues.password}
+          // onChange={(e) =>
+          //   setFormValues({ ...formValues, password: e.target.value })
+          // }
            />
           <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>
         </form>
