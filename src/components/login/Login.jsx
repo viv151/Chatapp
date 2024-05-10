@@ -10,6 +10,13 @@ import { collection, doc, getDocs, query, setDoc, where } from "firebase/firesto
 import upload from "../../lib/upload";
 
 const Login = () => {
+
+  const [formValues, setFormValues] = useState({
+    username: "",
+    email: "",
+    password: ""
+  });
+  
   const [avatar, setAvatar] = useState({
     file: null,
     url: "",
@@ -64,6 +71,17 @@ const Login = () => {
       });
 
       toast.success("Account created! You can login now!");
+      setFormValues({
+        username: "",
+        email: "",
+        password: ""
+      });
+      setAvatar({
+        file: null,
+        url: "",
+      })
+  
+
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -81,6 +99,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
+       location.reload();
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -88,7 +107,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-
+   
   return (
     <div className="login">
       <div className="item">
@@ -113,9 +132,24 @@ const Login = () => {
             style={{ display: "none" }}
             onChange={handleAvatar}
           />
-          <input type="text" placeholder="Username" name="username" />
-          <input type="text" placeholder="Email" name="email" />
-          <input type="password" placeholder="Password" name="password" />
+          <input type="text" placeholder="Username" name="username" 
+          value={formValues.username}
+          onChange={(e) =>
+            setFormValues({ ...formValues, username: e.target.value })
+          }
+          />
+          <input type="text" placeholder="Email" name="email"
+          value={formValues.email}
+          onChange={(e) =>
+            setFormValues({ ...formValues, email: e.target.value })
+          }
+          />
+          <input type="password" placeholder="Password" name="password"
+          value={formValues.password}
+          onChange={(e) =>
+            setFormValues({ ...formValues, password: e.target.value })
+          }
+           />
           <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>
         </form>
       </div>

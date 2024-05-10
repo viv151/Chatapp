@@ -23,9 +23,10 @@ const App = () => {
 
     return () => {
       unSub();
-    }
+    } 
+    
   }, [fetchUserInfo]);
-
+ 
 
   if(isLoading) return <div className='loading'>Loading...</div>
 
