@@ -5,6 +5,7 @@ import { useUserStore } from "../../../lib/userStore";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import { useChatStore } from "../../../lib/chatStore";
+// import Chatbot from "./chatbot/Chatbot";
 
 const ChatList = () => {
   const [chats, setChats] = useState([]);
@@ -68,6 +69,13 @@ const ChatList = () => {
     c.user.username.toLowerCase().includes(input.toLowerCase())
   );
 
+  // const handleSelectChatbot = () => {
+    // chats: 
+ 
+  // };
+
+
+
   return (
     <div className="chatList">
       <div className="search">
@@ -86,11 +94,21 @@ const ChatList = () => {
           onClick={() => setAddMode((prev) => !prev)}
         />
       </div>
+      <div className="item"   onClick={() => handleSelectChatbot()}>
+      <img src = "./avatar.png" alt=""/>
+      <div className="texts">
+            <span>
+              Chatbot
+            </span>
+            <p>Coming Soon</p>
+          </div>
+      </div>
+
       {filteredChats.map((chat) => (
         <div
           className="item"
           key={chat.chatId}
-          onClick={() => handleSelect(chat)}
+          // onClick={() => handleSelect(chat)}
           style={{
             backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
           }}
@@ -115,6 +133,7 @@ const ChatList = () => {
       ))}
 
       {addMode && <AddUser />}
+      {/* <Chatbot /> */}
     </div>
   );
 };
