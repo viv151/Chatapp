@@ -95,7 +95,7 @@ const ChatList = () => {
         />
       </div>
       <div className="item"   onClick={() => handleSelectChatbot()}>
-      <img src = "./avatar.png" alt=""/>
+      <img src = "./claude.png" alt=""/>
       <div className="texts">
             <span>
               Chatbot
@@ -108,7 +108,7 @@ const ChatList = () => {
         <div
           className="item"
           key={chat.chatId}
-          // onClick={() => handleSelect(chat)}
+          onClick={() => handleSelect(chat)}
           style={{
             backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
           }}
